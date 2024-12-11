@@ -66,7 +66,7 @@ AFPSProjectile::AFPSProjectile()
 	}
 
 	//Deleting the projectile after 3 seconds
-	InitialLifeSpan = 3.0f;
+	InitialLifeSpan = 1.0f;
 }
 
 // Called when the game starts or when spawned
