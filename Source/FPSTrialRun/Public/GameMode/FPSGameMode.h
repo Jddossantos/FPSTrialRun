@@ -4,7 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "FPSGameMode.generated.h"
+#include "Logging/StructuredLog.h"
+#include "FPSGameMode.generated.h"		//This line of code has to be last
 
 /**
  * 
