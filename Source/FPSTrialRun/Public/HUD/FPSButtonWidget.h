@@ -17,7 +17,8 @@ class FPSTRIALRUN_API UFPSButtonWidget : public UUserWidget
 	GENERATED_BODY()
 	
 public:
-	UPROPERTY(meta= (BindWidget))
+
+	UPROPERTY(meta = (BindWidget))
 	UButton* Button;
 
 	UPROPERTY(meta = (BindWidget))

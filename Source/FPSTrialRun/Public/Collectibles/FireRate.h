@@ -13,5 +13,11 @@ UCLASS()
 class FPSTRIALRUN_API AFireRate : public AFPSCollectible
 {
 	GENERATED_BODY()
+
+public:
+	AFireRate();
+
+protected:
+	virtual void BeginPlay() override;
 	
 };

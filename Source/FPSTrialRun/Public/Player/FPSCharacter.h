@@ -10,6 +10,7 @@
 #include "Projectile/FPSProjectile.h"
 #include "Kismet/GameplayStatics.h"
 #include "Engine/World.h"
+#include "HUD/FPSHUD.h"
 //#include "PhysicsInterfaceDeclaresCore.h"
 #include "FPSCharacter.generated.h"
 
@@ -28,6 +29,10 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+private:
+	float Health = -1;
+	const float MaxHealth = 100;
 
 public:
 	// Called every frame
@@ -95,4 +100,9 @@ public:
 	UFUNCTION()
 	void StopFire();
 
+	//Damage Function
+	UFUNCTION()
+	void Damage(float damageAmt);
+
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 };

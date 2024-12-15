@@ -29,6 +29,10 @@ public:
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* ScoreText;
 
+	//Timer text
+	UPROPERTY(meta = (BindWidget))
+	UTextBlock* TimerText;
+
 	//Vertical box
 	UPROPERTY(meta = (BindWidget))
 	UVerticalBox* ButtonContainer;
@@ -45,6 +49,11 @@ public:
 	UFUNCTION()
 	void SetScoreText(int amount);
 
-private:
+	//Function for setting the timer text
+	UFUNCTION()
+	void SetTimerText();
+
 	int UIScore;
+	FTimerHandle TimerHandle;
+	int TimerSeconds;
 };

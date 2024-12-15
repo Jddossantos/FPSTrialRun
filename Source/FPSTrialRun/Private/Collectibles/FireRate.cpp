@@ -3,3 +3,12 @@
 
 #include "Collectibles/FireRate.h"
 
+AFireRate::AFireRate()
+{
+
+}
+
+void AFireRate::BeginPlay()
+{
+	Super::BeginPlay();
+}

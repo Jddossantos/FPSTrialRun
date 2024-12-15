@@ -26,4 +26,15 @@ void AFPSGameMode::StartPlay()
 	//3. Modern way to printing without format specifiers
 	//UE_LOGFMT(LogTemp, Warning, "FPSGameMode Started v.2!");					 //this is using the "Logging/StructuredLog.h" header file
 	//UE_LOGFMT(LogTemp, Warning, "Test: {0}, TestBool: {1}", test, boolTest);
+
+		//Get the PlayerController
+	APlayerController* PlayerController = GetWorld()->GetFirstPlayerController();
+
+	//If there is a PlayerController
+	if (PlayerController)
+	{
+		//Set input more to Game Only
+		PlayerController->SetInputMode(FInputModeGameOnly());
+		PlayerController->bShowMouseCursor = false;	//Show mouse cursor to false to prevent clicking into the level
+	}
 }

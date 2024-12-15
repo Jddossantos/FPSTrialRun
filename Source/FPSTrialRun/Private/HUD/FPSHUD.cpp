@@ -8,8 +8,8 @@ void AFPSHUD::BeginPlay()
 {
     Super::BeginPlay();
 
-    //ShowGameMenu(startingGameWidget);
-    ShowSettingsMenu();
+    ShowGameMenu(startingGameWidget);
+    //ShowSettingsMenu();
 }
 
 void AFPSHUD::DrawHUD()

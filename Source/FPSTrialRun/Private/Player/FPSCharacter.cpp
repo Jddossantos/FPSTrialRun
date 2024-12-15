@@ -58,6 +58,8 @@ void AFPSCharacter::BeginPlay()
 
 	check(GEngine != nullptr);
 
+	Health = MaxHealth;
+
 	// Display a debug message for five seconds. 
 	// The -1 "Key" value argument prevents the message from being updated or refreshed.
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Blue, TEXT("We are using FPSCharacter."));
@@ -177,6 +179,8 @@ void AFPSCharacter::Fire()
 	//Set the projectile's initial trajactory
 	FVector LaunchDirection = MuzzleRotation.Vector();
 	Projectile->FireInDirection(LaunchDirection);
+
+	Damage(5);	//Damage amount
 }
 
 void AFPSCharacter::StartFire()
@@ -198,3 +202,22 @@ void AFPSCharacter::StopFire()
 	GetWorld()->GetTimerManager().ClearTimer(FireTimerHandle);
 }
 
+void AFPSCharacter::Damage(float damageAmt)
+{
+	//Minus Health from UI
+	AFPSHUD* HUD = UGameplayStatics::GetPlayerController(this, 0)->GetHUD<AFPSHUD>();
+	if (!HUD) return;
+
+	Health -= damageAmt;						//Health minus damage amount
+	float HealthPercent = Health / MaxHealth;	//Health percent is health divided by max health
+
+	HUD->gameWidgetContainer->SetHealthBar(HealthPercent);	//Setting Health bar to be the Health Percent
+}
+
+float AFPSCharacter::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
+{
+	float FinalDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	Damage(FinalDamage);
+
+	return FinalDamage;
+}
